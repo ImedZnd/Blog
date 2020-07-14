@@ -23,9 +23,10 @@ def save_picture(form_picture):
 
 def send_reset_email(user):
     token = user.get_reset_token()
-    msg = Message('Password Rest  Request', sender='noreplay@demo.com', recipients=[user.email])
-    msg.body=f'''
-To reset your password visit this link:
+    msg = Message('Password Rest  Request',
+                  sender='noreplay@demo.com',
+                  recipients=[user.email])
+    msg.body=f''' To reset your password visit this link:
 {url_for('users.reset_token',token=token, _external=True)}
 
 if you did not make this request the ignore this email
